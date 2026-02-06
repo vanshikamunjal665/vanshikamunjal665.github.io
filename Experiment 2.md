@@ -17,33 +17,33 @@ https://share.google/Jqjmq73cZkjqQ4xv6
 ---
 
 ### 1. Pull Image
-![Vagrant Installation](Images/Images%20Exp2/1a.png)
+![Pulling image](Images/Images%20Exp2/1a.png)
 ---
 
 ### 2. Run container with port mapping
-![Vagrant Installation](Images/Images%20Exp2/2a.png)
+![Run container](Images/Images%20Exp2/2a.png)
 
 ---
 
 ### 3. Verify running containers
-![Vagrant Installation](Images/Images%20Exp2/3a.png)
+![verify running container](Images/Images%20Exp2/3a.png)
 
 ---
 
 ### 4. Stop and Remove Container
-![Vagrant Installation](Images/Images%20Exp2/4a.png)
+![stop remove container](Images/Images%20Exp2/4a.png)
 
 ---
 
 ### 5. Remove Image
-![Vagrant Installation](Images/Images%20Exp2/5a.png)
+![remove image](Images/Images%20Exp2/5a.png)
 
 ---
 
 ### 6. Verify
-![Vagrant Installation](Images/Images%20Exp2/6a.png)
+![Verify](Images/Images%20Exp2/6a.png)
 
-![Vagrant Installation](Images/Images%20Exp2/6b.png)
+![Verify](Images/Images%20Exp2/6b.png)
 
 ---
 
