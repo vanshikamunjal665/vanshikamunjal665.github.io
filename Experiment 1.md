@@ -1,6 +1,6 @@
 # CONTAINERIZATION AND DEVOPS LAB
 
-## Experiment 1 (Part A):  
+## Experiment 1:  
 ### Comparison of Virtual Machines (VMs) and Containers using Ubuntu and Nginx
 
 **Reference Link:**  
@@ -18,68 +18,90 @@ https://upessocs.github.io/#dir=/Lectures/Containerization%20and%20DevOps/Lab/&f
 
 ---
 
-## Part A: Comparision of Virtual Machines (VMs) and Containers using Ubuntu and Nginx
+## Part A: Virtual Machine (Windows)
 
 ### 1. Install Vagrant for Windows and Verify Installation
-![Vagrant Installation]("C:\Users\Vanshika Munjal\Desktop\C&D Lab\Images Exp1\1a.png")
+![Vagrant Installation](Images/Images%20Exp1/1a.png)
+
+![Vagrant Installation](Images/Images%20Exp1/1b.png)
+---
+
+### 2. Initialize Vagrant with Ubuntu Box
+![Vagrant Installation](Images/Images%20Exp1/2a.png)
 
 ---
 
-### Initialize Vagrant with Ubuntu Box
-**(Image here)**
+### 3. Start the Virtual Machine
+![Vagrant Installation](Images/Images%20Exp1/3a.png)
+
+![Vagrant Installation](Images/Images%20Exp1/3b.png)
 
 ---
 
-### Start the Virtual Machine
-**(Image here)**
+### 4. Access the Virtual Machine
+![Vagrant Installation](Images/Images%20Exp1/4a.png)
 
 ---
 
-### Access the Virtual Machine
-**(Image here)**
+### 5. Install Nginx inside the Virtual Machine
+![Vagrant Installation](Images/Images%20Exp1/5a.png)
+
+![Vagrant Installation](Images/Images%20Exp1/5b.png)
+
+![Vagrant Installation](Images/Images%20Exp1/5c.png)
 
 ---
 
-### Install Nginx inside the Virtual Machine
-**(Image here)**
+### 6. Verify Nginx Installation
+![Vagrant Installation](Images/Images%20Exp1/6a.png)
 
 ---
 
-### Verify Nginx Installation
-**(Image here)**
+### 7. VM Observation Commands
+![Vagrant Installation](Images/Images%20Exp1/7a.png)
+
+![Vagrant Installation](Images/Images%20Exp1/7b.png)
+
+![Vagrant Installation](Images/Images%20Exp1/7c.png)
 
 ---
 
-### VM Observation Commands
-**(Image here)**
+### 8. Exit, Stop, and Remove the Virtual Machine
+![Vagrant Installation](Images/Images%20Exp1/8a.png)
+
+![Vagrant Installation](Images/Images%20Exp1/8b.png)
+
+![Vagrant Installation](Images/Images%20Exp1/8c.png)
+
+![Vagrant Installation](Images/Images%20Exp1/8d.png)
 
 ---
 
-### Exit, Stop, and Remove the Virtual Machine
-**(Image here)**
+## Part B: Containers using WSL (Windows)
+
+### 1. Install Docker Engine inside WSL
+![Vagrant Installation](Images/Images%20Exp1/1'a.png)
+
+![Vagrant Installation](Images/Images%20Exp1/1'b.png)
 
 ---
 
-## Experiment 1 (Part B):  
-### Containers using WSL (Windows)
-
-### Install Docker Engine inside WSL
-**(Image here)**
+### 2. Run Ubuntu Container with Nginx
+![Vagrant Installation](Images/Images%20Exp1/2'a.png)
 
 ---
 
-### Run Ubuntu Container with Nginx
-**(Image here)**
+### 3. Verify Nginx in Container
+![Vagrant Installation](Images/Images%20Exp1/3'a.png)
 
 ---
 
-### Verify Nginx in Container
-**(Image here)**
+### 4. Container Observation Commands
+![Vagrant Installation](Images/Images%20Exp1/4'a.png)
 
----
+![Vagrant Installation](Images/Images%20Exp1/4'b.png)
 
-### Container Observation Commands
-**(Image here)**
+![Vagrant Installation](Images/Images%20Exp1/4'c.png)
 
 ---
 
@@ -87,12 +109,8 @@ https://upessocs.github.io/#dir=/Lectures/Containerization%20and%20DevOps/Lab/&f
 
 The experiment demonstrates that containers are significantly more lightweight and resource-efficient compared to virtual machines, while virtual machines provide stronger isolation and full OS-level abstraction.
 
-**(Image here)**
-
 ---
 
 ## Conclusion
 
 Virtual Machines are suitable for full OS isolation and legacy workloads, whereas Containers are ideal for microservices, rapid deployment, and efficient resource utilization.
-
-**(Image here)**
