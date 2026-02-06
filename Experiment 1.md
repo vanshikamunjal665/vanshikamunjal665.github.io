@@ -16,14 +16,12 @@ https://upessocs.github.io/#dir=/Lectures/Containerization%20and%20DevOps/Lab/&f
 4. To deploy an Ubuntu-based Nginx web server in both environments.  
 5. To compare resource utilization, performance, and operational characteristics of Virtual Machines and Containers.
 
-**(Image here)**
-
 ---
 
-## Part A: Virtual Machines using Vagrant and VirtualBox
+## Part A: Comparision of Virtual Machines (VMs) and Containers using Ubuntu and Nginx
 
-### Install Vagrant for Windows and Verify Installation
-**(Image here)**
+### 1. Install Vagrant for Windows and Verify Installation
+![Vagrant Installation]("C:\Users\Vanshika Munjal\Desktop\C&D Lab\Images Exp1\1a.png")
 
 ---
 
