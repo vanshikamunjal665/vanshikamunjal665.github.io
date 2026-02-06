@@ -27,81 +27,81 @@ https://upessocs.github.io/#dir=/Lectures/Containerization%20and%20DevOps/Lab/&f
 ---
 
 ### 2. Initialize Vagrant with Ubuntu Box
-![Vagrant Installation](Images/Images%20Exp1/2a.png)
+![Initialize Vagrant](Images/Images%20Exp1/2a.png)
 
 ---
 
 ### 3. Start the Virtual Machine
-![Vagrant Installation](Images/Images%20Exp1/3a.png)
+![Start VM](Images/Images%20Exp1/3a.png)
 
-![Vagrant Installation](Images/Images%20Exp1/3b.png)
+![Start VM](Images/Images%20Exp1/3b.png)
 
 ---
 
 ### 4. Access the Virtual Machine
-![Vagrant Installation](Images/Images%20Exp1/4a.png)
+![Access VM](Images/Images%20Exp1/4a.png)
 
 ---
 
 ### 5. Install Nginx inside the Virtual Machine
-![Vagrant Installation](Images/Images%20Exp1/5a.png)
+![Install Nginx](Images/Images%20Exp1/5a.png)
 
-![Vagrant Installation](Images/Images%20Exp1/5b.png)
+![Install Nginx](Images/Images%20Exp1/5b.png)
 
-![Vagrant Installation](Images/Images%20Exp1/5c.png)
+![Install Nginx](Images/Images%20Exp1/5c.png)
 
 ---
 
 ### 6. Verify Nginx Installation
-![Vagrant Installation](Images/Images%20Exp1/6a.png)
+![Verify Nginx](Images/Images%20Exp1/6a.png)
 
 ---
 
 ### 7. VM Observation Commands
-![Vagrant Installation](Images/Images%20Exp1/7a.png)
+![VM Observation](Images/Images%20Exp1/7a.png)
 
-![Vagrant Installation](Images/Images%20Exp1/7b.png)
+![VM Observation](Images/Images%20Exp1/7b.png)
 
-![Vagrant Installation](Images/Images%20Exp1/7c.png)
+![VM Observation](Images/Images%20Exp1/7c.png)
 
 ---
 
 ### 8. Exit, Stop, and Remove the Virtual Machine
-![Vagrant Installation](Images/Images%20Exp1/8a.png)
+![VM](Images/Images%20Exp1/8a.png)
 
-![Vagrant Installation](Images/Images%20Exp1/8b.png)
+![VM](Images/Images%20Exp1/8b.png)
 
-![Vagrant Installation](Images/Images%20Exp1/8c.png)
+![VM](Images/Images%20Exp1/8c.png)
 
-![Vagrant Installation](Images/Images%20Exp1/8d.png)
+![VM](Images/Images%20Exp1/8d.png)
 
 ---
 
 ## Part B: Containers using WSL (Windows)
 
 ### 1. Install Docker Engine inside WSL
-![Vagrant Installation](Images/Images%20Exp1/1'a.png)
+![Install docker](Images/Images%20Exp1/1'a.png)
 
-![Vagrant Installation](Images/Images%20Exp1/1'b.png)
+![Install docker](Images/Images%20Exp1/1'b.png)
 
 ---
 
 ### 2. Run Ubuntu Container with Nginx
-![Vagrant Installation](Images/Images%20Exp1/2'a.png)
+![Run ubuntu](Images/Images%20Exp1/2'a.png)
 
 ---
 
 ### 3. Verify Nginx in Container
-![Vagrant Installation](Images/Images%20Exp1/3'a.png)
+![Verify nginx](Images/Images%20Exp1/3'a.png)
 
 ---
 
 ### 4. Container Observation Commands
-![Vagrant Installation](Images/Images%20Exp1/4'a.png)
+![Container Observation](Images/Images%20Exp1/4'a.png)
 
-![Vagrant Installation](Images/Images%20Exp1/4'b.png)
+![Container Observation](Images/Images%20Exp1/4'b.png)
 
-![Vagrant Installation](Images/Images%20Exp1/4'c.png)
+![Container Observation](Images/Images%20Exp1/4'c.png)
 
 ---
 
