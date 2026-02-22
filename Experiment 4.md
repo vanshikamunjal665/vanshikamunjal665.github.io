@@ -19,7 +19,6 @@ https://upessocs.github.io/#dir=/Lectures/Containerization%20and%20DevOps/Lab/&f
 
 ## Part A: Containerization Applications with Dockerfile
 
-
 ### 1. Create a Simple Application
 ##### python flask app
 ![Image](Images/Images%20Exp4/1a.png)
@@ -62,121 +61,157 @@ https://upessocs.github.io/#dir=/Lectures/Containerization%20and%20DevOps/Lab/&f
 ## Part C: Building Docker Images
 
 ### 1.	Build image from Dockerfile
-![create dockerfile](Images/Images%20Exp3/1'''a.png)
+![image](Images/Images%20Exp3/1'''a.png)
 
 ---
 
 ### 2. Check build images
-![build image](Images/Images%20Exp3/2'''a.png)
+![image](Images/Images%20Exp3/2'''a.png)
 
 ---
 
 ### 3. Tag with version number (alternative)
-![run container](Images/Images%20Exp3/3'''a.png)
+![image](Images/Images%20Exp3/3'''a.png)
 
 ---
 
 ### 4. Show image history
-![observations](Images/Images%20Exp3/4'''a.png)
+![image](Images/Images%20Exp3/4'''a.png)
 
 ---
 
 ### 5. Inspect image details
-![observations](Images/Images%20Exp3/5'''a.png)
+![image](Images/Images%20Exp3/5'''a.png)
 
 ---
 
 ## Part D: Running Containers
 
 ### 1. Run container with port mapping
-![create dockerfile](Images/Images%20Exp4/1''''a.png)
+![image](Images/Images%20Exp4/1''''a.png)
 
 ---
 
 ### 2. Test the application
-![build image](Images/Images%20Exp4/2''''a.png)
+![image](Images/Images%20Exp4/2''''a.png)
 
 ---
 
 ### 3. View running containers
-![run container](Images/Images%20Exp4/3''''a.png)
+![image](Images/Images%20Exp4/3''''a.png)
 
 ---
 
 ### 4. View container logs
-![observations](Images/Images%20Exp4/4''''a.png)
+![image](Images/Images%20Exp4/4''''a.png)
 
 ---
 
 ### 5. Stop container
-![observations](Images/Images%20Exp4/5''''a.png)
+![image](Images/Images%20Exp4/5''''a.png)
 
 ---
 
 ### 6. Start stopped container
-![observations](Images/Images%20Exp4/5''''a.png)
+![image](Images/Images%20Exp4/6''''a.png)
 
 ---
 
 ### 7. Remove container
-![observations](Images/Images%20Exp4/5''''a.png)
+![image](Images/Images%20Exp4/7''''a.png)
 
 ---
 
 ### 8. Remove container forcefully
-![observations](Images/Images%20Exp4/5''''a.png)
+![image](Images/Images%20Exp4/8''''a.png)
 
 ---
 
 ## Part E: Multi-stage Builds
 
-### 1. Run container with port mapping
-![create dockerfile](Images/Images%20Exp4/1''''a.png)
+### Why Multi-stage Builds?
+1. Smaller final image size
+2. Better security (remove build tools)
+3. Separate build and runtime environments
+
+
+### 1. Simple multi-stage Dockerfile
+![image](Images/Images%20Exp4/1'''''a.png)
 
 ---
 
-### 2. Test the application
-![build image](Images/Images%20Exp4/2''''a.png)
+### 2. Build regular image
+![image](Images/Images%20Exp4/2'''''a.png)
 
 ---
 
-### 3. View running containers
-![run container](Images/Images%20Exp4/3''''a.png)
+### 3. Build multi-stage image
+![image](Images/Images%20Exp4/3'''''a.png)
 
 ---
 
-### 4. View container logs
-![observations](Images/Images%20Exp4/4''''a.png)
+### 4. Compare sizes
+![image](Images/Images%20Exp4/4'''''a.png)
 
 ---
 
-### 5. Stop container
-![observations](Images/Images%20Exp4/5''''a.png)
+## Part F: Publishing to Docker Hub
+
+### 1. Login to Docker Hub
+![image](Images/Images%20Exp4/1''''''a.png)
 
 ---
 
-### 6. Start stopped container
-![observations](Images/Images%20Exp4/5''''a.png)
+### 2. Tag image for Docker Hub
+![image](Images/Images%20Exp4/2''''''a.png)
 
 ---
 
-### 7. Remove container
-![observations](Images/Images%20Exp4/5''''a.png)
+### 3. Push to Docker Hub
+![image](Images/Images%20Exp4/3''''''a.png)
 
 ---
 
-### 8. Remove container forcefully
-![observations](Images/Images%20Exp4/5''''a.png)
+### 4. Pull from Docker Hub
+![image](Images/Images%20Exp4/4''''''a.png)
 
 ---
 
-
-## Result
-
-The experiment 
+### 5. Run the pulled image
+![image](Images/Images%20Exp4/5''''''a.png)
 
 ---
 
-## Conclusion
+## Part G: Node.js Example
 
-Virtual Machines 
+### 1. Node.js Application
+##### app.js
+![Image](Images/Images%20Exp4/1'''''''a.png)
+
+##### package.json
+![Image](Images/Images%20Exp4/1'''''''b.png)
+
+##### Dockerfile
+![Image](Images/Images%20Exp4/1'''''''c.png)
+
+##### folders
+![Image](Images/Images%20Exp4/1'''''''d.png)
+
+---
+
+### 2. Build Image
+![Image](Images/Images%20Exp4/2'''''''a.png)
+
+---
+
+### 3. Run container
+![image](Images/Images%20Exp4/3'''''''a.png)
+
+---
+
+### 4. Test
+![image](Images/Images%20Exp4/4'''''''a.png)
+
+![image](Images/Images%20Exp4/4'''''''b.png)
+
+---
