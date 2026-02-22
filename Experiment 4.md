@@ -17,7 +17,7 @@ https://upessocs.github.io/#dir=/Lectures/Containerization%20and%20DevOps/Lab/&f
 
 ---
 
-## Part A: Containerization Applications with Dockerfile
+## Part 1: Containerization Applications with Dockerfile
 
 ### 1. Create a Simple Application
 ##### python flask app
@@ -42,13 +42,13 @@ https://upessocs.github.io/#dir=/Lectures/Containerization%20and%20DevOps/Lab/&f
 ---
 
 
-## Part B: Using .dockerignore
+## Part 2: Using .dockerignore
 
 ### 1. Create .dockerignore File
 ![image](Images/Images%20Exp4/1''a.png)
 
 ##### folders
-![image](Images/Images%20Exp4/1''a.png)
+![image](Images/Images%20Exp4/1''b.png)
 ---
 
 ### Why .dockerignore is important?
@@ -58,7 +58,7 @@ https://upessocs.github.io/#dir=/Lectures/Containerization%20and%20DevOps/Lab/&f
 4. Increases security  
 ---
 
-## Part C: Building Docker Images
+## Part 3: Building Docker Images
 
 ### 1.	Build image from Dockerfile
 ![image](Images/Images%20Exp3/1'''a.png)
@@ -85,7 +85,7 @@ https://upessocs.github.io/#dir=/Lectures/Containerization%20and%20DevOps/Lab/&f
 
 ---
 
-## Part D: Running Containers
+## Part 4: Running Containers
 
 ### 1. Run container with port mapping
 ![image](Images/Images%20Exp4/1''''a.png)
@@ -95,6 +95,7 @@ https://upessocs.github.io/#dir=/Lectures/Containerization%20and%20DevOps/Lab/&f
 ### 2. Test the application
 ![image](Images/Images%20Exp4/2''''a.png)
 
+![image](Images/Images%20Exp4/2''''b.png)
 ---
 
 ### 3. View running containers
@@ -127,7 +128,7 @@ https://upessocs.github.io/#dir=/Lectures/Containerization%20and%20DevOps/Lab/&f
 
 ---
 
-## Part E: Multi-stage Builds
+## Part 5: Multi-stage Builds
 
 ### Why Multi-stage Builds?
 1. Smaller final image size
@@ -155,7 +156,7 @@ https://upessocs.github.io/#dir=/Lectures/Containerization%20and%20DevOps/Lab/&f
 
 ---
 
-## Part F: Publishing to Docker Hub
+## Part 6: Publishing to Docker Hub
 
 ### 1. Login to Docker Hub
 ![image](Images/Images%20Exp4/1''''''a.png)
@@ -182,7 +183,7 @@ https://upessocs.github.io/#dir=/Lectures/Containerization%20and%20DevOps/Lab/&f
 
 ---
 
-## Part G: Node.js Example
+## Part 7: Node.js Example
 
 ### 1. Node.js Application
 ##### app.js
