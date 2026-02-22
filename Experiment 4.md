@@ -135,7 +135,6 @@ https://upessocs.github.io/#dir=/Lectures/Containerization%20and%20DevOps/Lab/&f
 2. Better security (remove build tools)
 3. Separate build and runtime environments
 
-
 ### 1. Simple multi-stage Dockerfile
 ![image](Images/Images%20Exp4/1'''''a.png)
 
@@ -186,17 +185,21 @@ https://upessocs.github.io/#dir=/Lectures/Containerization%20and%20DevOps/Lab/&f
 ## Part 7: Node.js Example
 
 ### 1. Node.js Application
-##### app.js
 ![Image](Images/Images%20Exp4/1'''''''a.png)
 
-##### package.json
+##### app.js
 ![Image](Images/Images%20Exp4/1'''''''b.png)
 
-##### Dockerfile
+##### package.json
 ![Image](Images/Images%20Exp4/1'''''''c.png)
 
-##### folders
+##### Dockerfile
 ![Image](Images/Images%20Exp4/1'''''''d.png)
+
+##### folders
+![Image](Images/Images%20Exp4/1'''''''e.png)
+
+![Image](Images/Images%20Exp4/1'''''''f.png)
 
 ---
 
