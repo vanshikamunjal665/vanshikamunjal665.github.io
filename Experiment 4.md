@@ -49,6 +49,7 @@ https://upessocs.github.io/#dir=/Lectures/Containerization%20and%20DevOps/Lab/&f
 
 ##### folders
 ![image](Images/Images%20Exp4/1''b.png)
+
 ---
 
 ### Why .dockerignore is important?
@@ -61,27 +62,27 @@ https://upessocs.github.io/#dir=/Lectures/Containerization%20and%20DevOps/Lab/&f
 ## Part 3: Building Docker Images
 
 ### 1.	Build image from Dockerfile
-![image](Images/Images%20Exp3/1'''a.png)
+![image](Images/Images%20Exp4/1'''a.png)
 
 ---
 
 ### 2. Check build images
-![image](Images/Images%20Exp3/2'''a.png)
+![image](Images/Images%20Exp4/2'''a.png)
 
 ---
 
 ### 3. Tag with version number (alternative)
-![image](Images/Images%20Exp3/3'''a.png)
+![image](Images/Images%20Exp4/3'''a.png)
 
 ---
 
 ### 4. Show image history
-![image](Images/Images%20Exp3/4'''a.png)
+![image](Images/Images%20Exp4/4'''a.png)
 
 ---
 
 ### 5. Inspect image details
-![image](Images/Images%20Exp3/5'''a.png)
+![image](Images/Images%20Exp4/5'''a.png)
 
 ---
 
@@ -96,6 +97,7 @@ https://upessocs.github.io/#dir=/Lectures/Containerization%20and%20DevOps/Lab/&f
 ![image](Images/Images%20Exp4/2''''a.png)
 
 ![image](Images/Images%20Exp4/2''''b.png)
+
 ---
 
 ### 3. View running containers
