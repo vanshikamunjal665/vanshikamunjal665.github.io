@@ -8,3 +8,7 @@
 2. [Experiment 2: Docker Installation, Configuration and Running Images](./Experiment%202.md)
 3. [Experiment 3: Deploying Nginx using different base images and comparing image layers](./Experiment%203.md)
 4. [Experiment 4: Docker Essentials](./Experiment%204.md)
+
+
+## Theory Class
+[Containerization & Devops Theory Class](https://github.com/vanshikamunjal665/vanshikamunjal665-containerization-theory.github.io)
