@@ -24,18 +24,22 @@ Solution: Volumes
 1. Anonymous Volumes  
 ![Image](Images/Images%20Exp5/1b.png)
 
-2. Named Volumes  
+
+3. Named Volumes  
 ![Image](Images/Images%20Exp5/1c.png)
 
 ![Image](Images/Images%20Exp5/1d.png)  
 
+
 3. Bind Mounts  
 ![Image](Images/Images%20Exp5/1e.png)
+
 
 ### Lab 3: Practical Volume Examples
 #### Example 1: Database with Persistent Storage
 
 ![Image](Images/Images%20Exp5/1f.png)  
+
 
 #### Example 2: Web App with Configuration Files
 
@@ -66,11 +70,12 @@ Solution: Volumes
 
 ![Image](Images/Images%20Exp5/2e.png)  
 
+
 ##### Method 3: In Dockerfile
-Set default environment variables
-ENV NODE_ENV=production
-ENV PORT=3000
-ENV APP_VERSION=1.0.0
+Set default environment variables  
+ENV NODE_ENV=production  
+ENV PORT=3000  
+ENV APP_VERSION=1.0.0  
 
 ## Part 3: Docker Monitoring
 ### Lab 1: Basic Monitoring Commands
@@ -121,18 +126,21 @@ ENV APP_VERSION=1.0.0
 ![Image](Images/Images%20Exp5/4a.png)  
 
 ### Lab 2: Network Types Explained
-1. Bridge Network
+1. Bridge Network  
 ![Image](Images/Images%20Exp5/4b.png)
 
 ![Image](Images/Images%20Exp5/4c.png)  
 
-2. Host Network
+
+2. Host Network  
 ![Image](Images/Images%20Exp5/4d.png)  
 
-3. None Network
-![Image](Images/Images%20Exp5/4e.png)  
 
-4. Overlay Network (swarm)
+3. None Network  
+![Image](Images/Images%20Exp5/4e.png)
+
+
+5. Overlay Network (swarm)  
 ![Image](Images/Images%20Exp5/4f.png)  
 
 ### Lab 3: Network Management Commands
