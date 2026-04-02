@@ -136,7 +136,7 @@ Deploy WordPress with MySQL using:
 
 ### I. Using Docker Run
 
-1. Create Network
+1. Create Network  
 ![Image](Images/Images%20Exp6/7.png)  
 
 3. Run MySQL  
@@ -152,7 +152,7 @@ Deploy WordPress with MySQL using:
 
 ### II. Using Docker Compose
 
-1. Create docker-compose.yml
+1. Create docker-compose.yml  
 ![Image](Images/Images%20Exp6/11.png)  
 
 3. Run  
@@ -160,7 +160,7 @@ Deploy WordPress with MySQL using:
 
 ![Image](Images/Images%20Exp6/13.png)  
 
-5. Stop
+5. Stop  
 ![Image](Images/Images%20Exp6/14.png)  
 
 ---
@@ -209,7 +209,7 @@ Difference between Compose and Swarm: Docker Compose is used for local developme
 
 ![Image](Images/Images%20Exp6/26.png)  
 
-1. Build and Run
+1. Build and Run  
 ![Image](Images/Images%20Exp6/27.png)  
 
 2. Verify in Browser  
@@ -241,7 +241,7 @@ Difference between Compose and Swarm: Docker Compose is used for local developme
 
 ### Task 6: Multistage Dockerfile with Compose
 
-1. Create `app.js`
+1. Create `app.js`  
 ![Image](Images/Images%20Exp6/32.png)  
 
 2. Create multistage Dockerfile  
@@ -255,10 +255,10 @@ Difference between Compose and Swarm: Docker Compose is used for local developme
 
 ![Image](Images/Images%20Exp6/36.png)  
 
-5. Verify in browser
+5. Verify in browser  
 ![Image](Images/Images%20Exp6/37.png)    
 
-6. Compare image size
+6. Compare image size  
 ![Image](Images/Images%20Exp6/38.png)  
 
 The multi-stage Docker build was implemented successfully. However, the final image size is approximately the same as the base image (127MB). This is because the application is very simple and does not include additional dependencies or build tools.  
