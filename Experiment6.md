@@ -1,194 +1,318 @@
 # CONTAINERIZATION AND DEVOPS LAB
 
-## Experiment 5:  
-### Docker- Volumes, Environment Variables, Monitoring & Networks
+## Experiment 6A:  
+### Comparison of Docker Run and Docker Compose
 
 **Reference Link:**  
-https://upessocs.github.io/#dir=/Lectures/Containerization%20and%20DevOps/Lab/&file=Experiment%2005%20Docker%20Volumes,%20Environment%20Variables,%20Monitoring,%20Networks%20Final.md
+https://upessocs.github.io/#dir=/Lectures/Containerization%20and%20DevOps/Lab/&file=Experiment%2006%20Docker%20Compose%20vs%20Docker%20Run,%20and%20MultiContainer%20Application%20-%20Wordpress+MySQL.md
 
 ---
 
-## Part 1: Docker Volumes- Persistent Data Storage
-### Lab 1: Understanding Data Persistence  
+## Part A: Theory
+### 1. Objective
 
-
-##### The Problem: Container Data is Ephemeral  
-![Image](Images/Images%20Exp5/1a.png)  
-
-Solution: Volumes
+To understand the relationship between `docker run` and Docker Compose, and to compare their configuration syntax and use cases.
 
 ---
 
-### Lab 2: Volume Types
+### 2. Background Theory
 
-1. Anonymous Volumes  
-![Image](Images/Images%20Exp5/1b.png)
+#### 2.1 Docker Run (Imperative Approach)
 
+The `docker run` command is used to create and start a container from an image. It requires explicit flags for:
 
-3. Named Volumes  
-![Image](Images/Images%20Exp5/1c.png)
+- Port mapping (`-p`)
+- Volume mounting (`-v`)
+- Environment variables (`-e`)
+- Network configuration (`--network`)
+- Restart policies (`--restart`)
+- Resource limits (`--memory`, `--cpus`)
+- Container name (`--name`)
 
-![Image](Images/Images%20Exp5/1d.png)  
+This approach is **imperative**, meaning you specify step-by-step instructions.
 
+#### Example:
+```bash
+docker run -d \
+  --name my-nginx \
+  -p 8080:80 \
+  -v ./html:/usr/share/nginx/html \
+  -e NGINX_HOST=localhost \
+  --restart unless-stopped \
+  nginx:alpine
+```
 
-3. Bind Mounts  
-![Image](Images/Images%20Exp5/1e.png)
+---
 
+#### 2.2 Docker Compose (Declarative Approach)
 
-### Lab 3: Practical Volume Examples
-#### Example 1: Database with Persistent Storage
+Docker Compose uses a YAML file (`docker-compose.yml`) to define services, networks, and volumes in a structured format.
 
-![Image](Images/Images%20Exp5/1f.png)  
+Instead of multiple `docker run` commands, a single command is used:
 
+```bash
+docker compose up -d
+```
 
-#### Example 2: Web App with Configuration Files
+Compose is **declarative**, meaning you define the desired state of the application.
 
-![Image](Images/Images%20Exp5/1g.png)  
+#### Equivalent Compose File:
+```yaml
+version: '3.8'
 
-![Image](Images/Images%20Exp5/1h.png)  
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: my-nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./html:/usr/share/nginx/html
+    environment:
+      NGINX_HOST: localhost
+    restart: unless-stopped
+```
 
-### Lab 4: Volume Management Commands
+---
 
-![Image](Images/Images%20Exp5/1i.png)  
+### 3. Mapping: Docker Run vs Docker Compose
 
-![Image](Images/Images%20Exp5/1j.png)  
+| Docker Run Flag       | Docker Compose Equivalent              |
+|----------------------|----------------------------------------|
+| `-p 8080:80`         | `ports:`                               |
+| `-v host:container`  | `volumes:`                             |
+| `-e KEY=value`       | `environment:`                          |
+| `--name`             | `container_name:`                       |
+| `--network`          | `networks:`                             |
+| `--restart`          | `restart:`                              |
+| `--memory`           | `deploy.resources.limits.memory`        |
+| `--cpus`             | `deploy.resources.limits.cpus`          |
+| `-d`                 | `docker compose up -d`                  |
 
-![Image](Images/Images%20Exp5/1k.png)  
+---
 
-## Part 2: Environment Variables
-### Lab 1: Setting Environment Variables
+### 4. Advantages of Docker Compose
 
-##### Method 1: Using -e flag
-![Image](Images/Images%20Exp5/2a.png)  
+1. Simplifies multi-container applications  
+2. Provides reproducibility  
+3. Version controllable configuration  
+4. Unified lifecycle management  
+5. Supports service scaling  
 
-![Image](Images/Images%20Exp5/2b.png)  
+#### Example:
+```bash
+docker compose up --scale web=3
+```
 
-![Image](Images/Images%20Exp5/2c.png)  
+## Part B: Practical Task
 
-##### Method 2: Using --env-file
-![Image](Images/Images%20Exp5/2d.png)  
+#### Task 1: Single Container Comparison
 
-![Image](Images/Images%20Exp5/2e.png)  
+**Step 1: Run Nginx using Docker Run**  
+![Image](Images/Images%20Exp5/5b.png)  
 
+![Image](Images/Images%20Exp5/5b.png)  
 
-##### Method 3: In Dockerfile
-Set default environment variables  
-ENV NODE_ENV=production  
-ENV PORT=3000  
-ENV APP_VERSION=1.0.0  
+![Image](Images/Images%20Exp5/5b.png)  
 
-## Part 3: Docker Monitoring
-### Lab 1: Basic Monitoring Commands
+![Image](Images/Images%20Exp5/5b.png)  
 
-![Image](Images/Images%20Exp5/3a.png)  
-
-![Image](Images/Images%20Exp5/3b.png)  
-
-![Image](Images/Images%20Exp5/3c.png)  
-
-![Image](Images/Images%20Exp5/3d.png)  
-
-![Image](Images/Images%20Exp5/3e.png)  
-
-![Image](Images/Images%20Exp5/3f.png)  
-
-![Image](Images/Images%20Exp5/3g.png)  
-
-### Lab 2: docker top- Process Monitoring
-
-![Image](Images/Images%20Exp5/3h.png)  
-
-### Lab 3: docker logs- Application Logs
-
-![Image](Images/Images%20Exp5/3i.png)  
-
-![Image](Images/Images%20Exp5/3j.png)  
-
-![Image](Images/Images%20Exp5/3k.png)  
-
-![Image](Images/Images%20Exp5/3l.png)  
-
-### Lab 4: Container Inspection
-
-![Image](Images/Images%20Exp5/3m.png)  
-
-![Image](Images/Images%20Exp5/3n.png)  
-
-### Lab 5: Practical Monitoring Script
-
-![Image](Images/Images%20Exp5/3o.png)  
-
-![Image](Images/Images%20Exp5/3p.png)  
-
-## Part 4: Docker Networks
-### Lab 1: Understanding Docker Network Types
-
-![Image](Images/Images%20Exp5/4a.png)  
-
-### Lab 2: Network Types Explained
-1. Bridge Network  
-![Image](Images/Images%20Exp5/4b.png)
-
-![Image](Images/Images%20Exp5/4c.png)  
-
-
-2. Host Network  
-![Image](Images/Images%20Exp5/4d.png)  
-
-
-3. None Network  
-![Image](Images/Images%20Exp5/4e.png)
-
-
-5. Overlay Network (swarm)  
-![Image](Images/Images%20Exp5/4f.png)  
-
-### Lab 3: Network Management Commands
-
-![Image](Images/Images%20Exp5/4g.png)  
-
-### Lab 4: Multi-container Application Program
-
-![Image](Images/Images%20Exp5/4h.png)  
-
-![Image](Images/Images%20Exp5/4i.png)  
-
-![Image](Images/Images%20Exp5/4j.png)  
-
-### Lab 5: Network Inspection & Debugging
-
-![Image](Images/Images%20Exp5/4k.png)  
-
-![Image](Images/Images%20Exp5/4l.png)  
-
-![Image](Images/Images%20Exp5/4m.png)  
-
-![Image](Images/Images%20Exp5/4n.png)  
-
-### Lab 6: Port Publishing vs Exposing
-
-![Image](Images/Images%20Exp5/4o.png)  
-
-![Image](Images/Images%20Exp5/4p.png)  
-
-## Part 5: Complete Real-world Example
-
-##### Implementation:
-
-![Image](Images/Images%20Exp5/5a.png)  
+**Step 2: Run same setup using Docker Compose**  
+![Image](Images/Images%20Exp5/5b.png)  
 
 ![Image](Images/Images%20Exp5/5b.png)  
 
 ---
 
-## Key Takeaways
-1. Volumes persist data beyond container lifecycle  
-2. Environment variables configure containers dynamically  
-3. Monitoring commands help debug and optimize containers  
-4. Networks enable secure container communication  
-5. Always use named volumes for production data  
-6. Custom networks provide better isolation and DNS  
-7. Monitor resource usage to prevent issues  
-8. Use .env files for sensitive configuration  
+#### Task 2: Multi-container Application
 
-This experiment covers essential Docker features for building, configuring, and managing production-ready containerized applications.
+**Objective:**  
+Deploy WordPress with MySQL using:
+
+1. Docker Run (manual way)  
+2. Docker Compose (structured way)  
+
+---
+
+### I. Using Docker Run
+
+1. Create Network
+![Image](Images/Images%20Exp5/5b.png)  
+
+3. Run MySQL  
+![Image](Images/Images%20Exp5/5b.png)  
+
+4. Run WordPress  
+![Image](Images/Images%20Exp5/5b.png)  
+
+5. Test  
+![Image](Images/Images%20Exp5/5b.png)  
+
+---
+
+### II. Using Docker Compose
+
+1. Create docker-compose.yml
+![Image](Images/Images%20Exp5/5b.png)  
+
+3. Run  
+![Image](Images/Images%20Exp5/5b.png)
+
+![Image](Images/Images%20Exp5/5b.png)  
+
+5. Stop
+![Image](Images/Images%20Exp5/5b.png)  
+
+---
+
+## Part C: Conversion and Build-based Tasks
+
+### Task 3: Convert Docker Run to Docker Compose
+
+**Problem 1: Basic Web Application**  
+![Image](Images/Images%20Exp5/5b.png)  
+
+![Image](Images/Images%20Exp5/5b.png)  
+
+![Image](Images/Images%20Exp5/5b.png)  
+
+
+**Problem 2: Volume + Network Configuration**  
+![Image](Images/Images%20Exp5/5b.png)  
+
+![Image](Images/Images%20Exp5/5b.png)  
+
+![Image](Images/Images%20Exp5/5b.png)  
+
+---
+
+### Task 4: Resource Limits Conversion
+
+![Image](Images/Images%20Exp5/5b.png)  
+
+![Image](Images/Images%20Exp5/5b.png)  
+
+![Image](Images/Images%20Exp5/5b.png)  
+
+**Note:**  
+When deploy works: The deploy section works only in Docker Swarm mode and is ignored in normal docker-compose.
+Difference between Compose and Swarm: Docker Compose is used for local development, while Docker Swarm is used for production and supports features like resource limits and scaling.
+
+---
+
+## Part D: Using Dockerfile instead of Standard Image
+
+### Task 5: Replace Standard Image with Dockerfile (Node App)  
+![Image](Images/Images%20Exp5/5b.png)  
+
+![Image](Images/Images%20Exp5/5b.png)  
+
+![Image](Images/Images%20Exp5/5b.png)  
+
+1. Build and Run
+![Image](Images/Images%20Exp5/5b.png)  
+
+2. Verify in Browser  
+![Image](Images/Images%20Exp5/5b.png)  
+
+3. Modify `app.js` message  
+![Image](Images/Images%20Exp5/5b.png)  
+
+4. Rebuild and observe changes  
+![Image](Images/Images%20Exp5/5b.png)
+
+![Image](Images/Images%20Exp5/5b.png)  
+
+---
+
+5. Difference between Image and Build
+
+**Image:**
+- Used to pull a pre-built image from Docker Hub (or registry)  
+- No need for Dockerfile  
+- Faster to run  
+
+**Build:**
+- Used to create a custom image using a Dockerfile  
+- Requires source code + Dockerfile  
+- Allows customization  
+
+---
+
+### Task 6: Multistage Dockerfile with Compose
+
+1. Create `app.js`
+![Image](Images/Images%20Exp5/5b.png)  
+
+2. Create multistage Dockerfile  
+![Image](Images/Images%20Exp5/5b.png)  
+
+3. Create docker-compose.yml  
+![Image](Images/Images%20Exp5/5b.png)  
+
+4. Build and run  
+![Image](Images/Images%20Exp5/5b.png)
+
+![Image](Images/Images%20Exp5/5b.png)  
+
+5. Verify in browser
+![Image](Images/Images%20Exp5/5b.png)    
+
+6. Compare image size
+![Image](Images/Images%20Exp5/5b.png)  
+
+The multi-stage Docker build was implemented successfully. However, the final image size is approximately the same as the base image (127MB). This is because the application is very simple and does not include additional dependencies or build tools.  
+
+In real-world applications, multi-stage builds significantly reduce image size by removing unnecessary build dependencies and keeping only the runtime environment.  
+
+---
+
+## Experiment 6B: Multi-container Application using Docker Compose (WordPress + Database)
+
+### Objective
+
+To deploy a multi-container application using Docker Compose, consisting of:
+
+- WordPress (frontend + PHP)  
+- MySQL database (backend)  
+
+Also:
+
+- Understand container networking & volumes  
+- Learn how to scale services  
+- Compare with Docker Swarm for production deployment  
+
+---
+
+### Steps
+
+1. Create project directory  
+![Image](Images/Images%20Exp5/5b.png)
+
+![Image](Images/Images%20Exp5/5b.png)  
+
+2. Create docker-compose.yml  
+![Image](Images/Images%20Exp5/5b.png)  
+
+3. Start Application  
+![Image](Images/Images%20Exp5/5b.png)  
+
+4. Verify in browser  
+![Image](Images/Images%20Exp5/5b.png)  
+
+5. Verify containers  
+![Image](Images/Images%20Exp5/5b.png)  
+
+6. Check volumes  
+![Image](Images/Images%20Exp5/5b.png)  
+
+7. Stop Application  
+![Image](Images/Images%20Exp5/5b.png)  
+
+---
+
+### Scaling in Docker Compose
+
+![Image](Images/Images%20Exp5/5b.png)  
+
+![Image](Images/Images%20Exp5/5b.png)  
