@@ -9,6 +9,8 @@
 3. [Experiment 3: Deploying Nginx using different base images and comparing image layers](./Experiment%203.md)
 4. [Experiment 4: Docker Essentials](./Experiment%204.md)
 5. [Experiment 5: Docker- Volumes, Environment Variables, Monitoring & Networks](./Experiment5.md)
+6. [Experiment 6](./Experiment6.md)
+7. [Experiment 7: CI/CD using Jenkins, GitHub and Docker Hub](./Experiment7.md)
 
 
 ## Theory Class Link  
