@@ -71,11 +71,11 @@ Typically, the only requirement is a terminal to execute commands and a text edi
 
 ## 1. Install via apt (Debian/Ubuntu)
 
-![Image](Images/Images%20Exp9/19.png)  
+![Image](Images/Images%20Exp9/1.png)  
 
-![Image](Images/Images%20Exp9/19.png)  
+![Image](Images/Images%20Exp9/2.png)  
 
-![Image](Images/Images%20Exp9/19.png)  
+![Image](Images/Images%20Exp9/3.png)  
 
 Updates the system package listand ensures latest versions are available  
   ``sudo apt update``
@@ -90,7 +90,7 @@ Checks if Ansible is installed properly and displays version and config details
 
 ## 2. Post Installation Check
 
-![Image](Images/Images%20Exp9/19.png)  
+![Image](Images/Images%20Exp9/4.png)  
 
 
 Tests Ansible on your own system (control node) and Checks if Ansible is working properly before connecting to other servers  
@@ -102,7 +102,7 @@ Tests Ansible on your own system (control node) and Checks if Ansible is working
 
 ## 1. Create SSH key pair in WSL
 
-![Image](Images/Images%20Exp9/19.png)  
+![Image](Images/Images%20Exp9/5.png)  
 
     ssh-keygen -t rsa -b 4096
 
@@ -112,7 +112,7 @@ Tests Ansible on your own system (control node) and Checks if Ansible is working
 
 ## 2. Copy keys to current folder
 
-![Image](Images/Images%20Exp9/19.png)  
+![Image](Images/Images%20Exp9/6.png)  
 
     cp ~/.ssh/id_rsa.pub .
     cp ~/.ssh/id_rsa .
@@ -123,7 +123,7 @@ Tests Ansible on your own system (control node) and Checks if Ansible is working
 
 ## 3. Check if copied
 
-![Image](Images/Images%20Exp9/19.png)  
+![Image](Images/Images%20Exp9/7.png)  
 
     ls
 
@@ -133,7 +133,7 @@ Tests Ansible on your own system (control node) and Checks if Ansible is working
 
 ## 4. Copying keys to another directory
 
-![Image](Images/Images%20Exp9/19.png)  
+![Image](Images/Images%20Exp9/8.png)  
 
     cd /mnt/c/Users/Vanshika\ Munjal/Desktop/C\&D\ Lab/exp9\ file
     cp /mnt/c/Users/HP/id_rsa .
@@ -141,9 +141,9 @@ Tests Ansible on your own system (control node) and Checks if Ansible is working
 
 ## 5. Create Dockerfile for Ubuntu SSH Server
 
-![Image](Images/Images%20Exp9/19.png)  
+![Image](Images/Images%20Exp9/9.png)  
 
-![Image](Images/Images%20Exp9/19.png)  
+![Image](Images/Images%20Exp9/10.png)  
 
 
 **Explanation:** Sets up SSH-enabled Ubuntu container.
@@ -152,9 +152,9 @@ Tests Ansible on your own system (control node) and Checks if Ansible is working
 
 ## 6. Build Docker Image
 
-![Image](Images/Images%20Exp9/19.png)  
+![Image](Images/Images%20Exp9/11.png)  
 
-![Image](Images/Images%20Exp9/19.png)  
+![Image](Images/Images%20Exp9/12.png)  
 
     docker build -t ubuntu-server .
 
@@ -164,7 +164,7 @@ Tests Ansible on your own system (control node) and Checks if Ansible is working
 
 ## 7. Run Docker Container
 
-![Image](Images/Images%20Exp9/19.png)  
+![Image](Images/Images%20Exp9/13.png)  
 
     docker run -d -p 2222:22 --name ssh-test-server ubuntu-server
 
@@ -174,7 +174,7 @@ Tests Ansible on your own system (control node) and Checks if Ansible is working
 
 ## 8. Find Container IP Address
 
-![Image](Images/Images%20Exp9/19.png)  
+![Image](Images/Images%20Exp9/14.png)  
 
     docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ssh-test-server
 
@@ -186,13 +186,13 @@ Tests Ansible on your own system (control node) and Checks if Ansible is working
 
 ### Password Authentication
 
-![Image](Images/Images%20Exp9/19.png)  
+![Image](Images/Images%20Exp9/15.png)  
 
     ssh root@localhost -p 2222
 
 ### Key-Based Authentication
 
-![Image](Images/Images%20Exp9/19.png)  
+![Image](Images/Images%20Exp9/16.png)  
 
     ssh -i ~/.ssh/id_rsa root@localhost -p 2222
 
@@ -200,20 +200,20 @@ Tests Ansible on your own system (control node) and Checks if Ansible is working
 
 ---
 
-## 9. Cleanup
+## 10. Cleanup
 
-![Image](Images/Images%20Exp9/19.png)  
+![Image](Images/Images%20Exp9/17.png)  
 
     docker stop ss-test-server
     docker rm -f ssh-test-server
 
 ---
 
-# 🧪 Part C: Ansible with Docker
+# Part C: Ansible with Docker
 
 ## 1. Start Multiple Containers to act as a server
 
-![Image](Images/Images%20Exp9/19.png)  
+![Image](Images/Images%20Exp9/18.png)  
 
 ![Image](Images/Images%20Exp9/19.png)  
 
@@ -227,7 +227,7 @@ Tests Ansible on your own system (control node) and Checks if Ansible is working
 
 ## 2. Create Ansible Inventory
 
-![Image](Images/Images%20Exp9/19.png)  
+![Image](Images/Images%20Exp9/20.png)  
 
     echo "[servers]" > inventory.ini
     for i in {1..4}; do
@@ -240,7 +240,7 @@ Tests Ansible on your own system (control node) and Checks if Ansible is working
 
 ## 3. Add Variables
 
-![Image]
+![Image](Images/Images%20Exp9/20.png)  
 
     cat << EOF >> inventory.ini
 
@@ -256,7 +256,7 @@ Tests Ansible on your own system (control node) and Checks if Ansible is working
 
 ## 4. Review content of inventory.in
 
-![Image]
+![Image](Images/Images%20Exp9/21.png)  
 
     cat inventory.ini
 
@@ -264,7 +264,7 @@ Tests Ansible on your own system (control node) and Checks if Ansible is working
 
 ## 5. Manual SSH Test
 
-![Image]
+![Image](Images/Images%20Exp9/22.png)  
 
     ssh -i ~/.ssh/id_rsa root@<IP>
 
@@ -272,7 +272,7 @@ Tests Ansible on your own system (control node) and Checks if Ansible is working
 
 ## 6. Ansible Ping Test
 
-![Image]
+![Image](Images/Images%20Exp9/23.png)  
 
     ansible all -i inventory.ini -m ping
 
@@ -280,51 +280,31 @@ Tests Ansible on your own system (control node) and Checks if Ansible is working
 
 ---
 
-## 7. Create Playbook
+## 7. Create Playbook (update.yml)
 
-![Image]
-
-    ---
-    - name: Configure servers
-      hosts: all
-      become: yes
-
-      tasks:
-        - name: Update packages
-          apt:
-            update_cache: yes
-
-        - name: Install packages
-          apt:
-            name: ["vim", "htop", "wget"]
-            state: present
-
-        - name: Create test file
-          copy:
-            dest: /root/ansible_test.txt
-            content: "Configured by Ansible on {{ inventory_hostname }}"
+![Image](Images/Images%20Exp9/24.png)  
 
 ---
 
 ## 8. Run Playbook
 
-![Image]
+![Image](Images/Images%20Exp9/25.png)  
 
     ansible-playbook -i inventory.ini update.yml
 
 ---
 
-## 9. Verify Changes (Ansible)
+## 9. Verify Changes using Ansible
 
-![Image]
+![Image](Images/Images%20Exp9/26.png)  
 
     ansible all -i inventory.ini -m command -a "cat /root/ansible_test.txt"
 
 ---
 
-## 10. Verify via Docker
+## 10. Verify changes manually via Docker
 
-![Image]
+![Image](Images/Images%20Exp9/27.png)  
 
     for i in {1..4}; do
       docker exec server${i} cat /root/ansible_test.txt
@@ -334,7 +314,7 @@ Tests Ansible on your own system (control node) and Checks if Ansible is working
 
 ## 11. Cleanup
 
-![Image]
+![Image](Images/Images%20Exp9/28.png)  
 
     for i in {1..4}; do docker rm -f server${i}; done
 
