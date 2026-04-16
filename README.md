@@ -11,6 +11,7 @@
 5. [Experiment 5: Docker- Volumes, Environment Variables, Monitoring & Networks](./Experiment5.md)
 6. [Experiment 6](./Experiment6.md)
 7. [Experiment 7: CI/CD using Jenkins, GitHub and Docker Hub](./Experiment7.md)
+8. [Experiment 9: Ansible](./Experiment9.md)
 
 
 ## Theory Class Link  
