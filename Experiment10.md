@@ -11,59 +11,54 @@ https://upessocs.github.io/#dir=/Lectures/Containerization%20and%20DevOps/Lab/&f
 # Theory
 
 ## Problem Statement
-Managing infrastructure manually across multiple servers leads to configuration drift, inconsistent environments, and time-consuming repetitive tasks. Scaling from one server to hundreds becomes nearly impossible with manual SSH-based administration.
+Code quality issues (bugs, vulnerabilities, code smells) are often discovered late in the development cycle, making them expensive to fix. Manual code reviews are inconsistent and do not scale.
 
 ---
 
-## What is Ansible?
-
-- Ansible is an open-source **automation tool** for **configuration management, application deployment, and orchestration**.
-- It follows an **agentless architecture**, using SSH for Linux and WinRM for Windows.
-- Uses **YAML-based playbooks** to define automation tasks.
-
-*Ansible is software that enables cross-platform automation and orchestration at scale and has become the standard choice among enterprise automation solutions.*
+## What is SonarQube?
+SonarQube is an open-source platform for continuous inspection of code quality. It performs automatic reviews with static analysis to detect bugs, code smells, and security vulnerabilities.
 
 ---
 
-## How Ansible Solves the Problem
+## How SonarQube Solves the Problem:
 
-- **Agentless Architecture**: No software installation required on managed nodes  
-- **Idempotency**: Running playbooks multiple times yields the same result  
-- **Declarative Syntax**: Describe desired state, not the steps to achieve it  
-- **Push-based**: Initiates changes from control node immediately  
-
----
-
-## Key Concepts
-
-| Component        | Description |
-|----------------|------------|
-| Control Node    | Machine with Ansible installed |
-| Managed Nodes   | Target servers (no Ansible agent needed) |
-| Inventory       | Defines the list of managed nodes (e.g., `inventory.ini`) |
-| Playbooks       | YAML files containing a sequence of automation steps |
-| Tasks           | Individual actions in playbooks (e.g., installing a package) |
-| Modules         | Built-in functionality to perform tasks (e.g., `yum`, `apt`, `service`) |
-| Roles           | Pre-defined reusable automation scripts |
+- **Continuous Inspection:** Scans code with every commit, providing immediate feedback  
+- **Quality Gates:** Defines pass/fail criteria for code quality  
+- **Technical Debt Quantification:** Measures effort needed to fix issues  
+- **Multi-language Support:** Supports 20+ programming languages  
+- **Visual Analytics:** Dashboard showing code quality metrics and trends  
 
 ---
 
-## How does Ansible work?
+## Key Concepts:
 
-Ansible uses the concepts of control and managed nodes. It connects from the **control node**, any machine with Ansible installed, to the **managed nodes**, sending commands and instructions to them. The units of code that Ansible executes on the managed nodes are called **modules**. Each module is invoked by a **task**, and an ordered list of tasks together forms a **playbook**. Users write playbooks with tasks and modules to define the desired state of the system. The managed machines are represented in a simple **inventory file** that groups all nodes into different categories. Ansible uses a simple language, **YAML**, to define playbooks in a human-readable format.  
-*Ansible doesn’t require installation of any extra agents on managed nodes, making it easy to start using.*  
-Typically, the only requirement is a terminal to execute commands and a text editor to define configuration files.
+- **Quality Gate:** Set of conditions that code must meet before deployment  
+- **Technical Debt:** Estimated time to fix all issues  
+- **Code Smells:** Maintainability issues that do not affect functionality  
+- **Vulnerabilities:** Security-related issues  
+- **Bugs:** Code that might break or behave unexpectedly  
+- **Coverage:** Percentage of code covered by tests  
+- **Duplications:** Repeated code blocks  
 
 ---
 
-## Benefits of using Ansible
+## Hands-on Lab Setup
 
-- A free and open-source community project with a huge audience  
-- Battle-tested over many years as a preferred IT automation tool  
-- Easy to start and use without needing special coding skills  
-- Simple deployment workflow without extra agents  
-- Supports modularity and reusability for advanced automation  
-- Extensive official documentation with strong community support  
+### Lab Architecture
+
+```
+Developer (Source Code)
+        │
+        ▼
+Sonar Scanner (CLI / Maven / CI)
+        │
+        ▼
+SonarQube Server
+(Analysis Engine, Quality Gates, Dashboard)
+        │
+        ▼
+PostgreSQL Database
+```
 
 ---
 
@@ -74,7 +69,7 @@ mkdir sonarqube-exp10
 cd sonarqube-exp10
 ```
 
-*(Insert Image)*  
+![Image](Images/Images%20Exp10/1.png)  
 
 ---
 
@@ -125,7 +120,9 @@ networks:
     driver: bridge
 ```
 
-*(Insert Image)*  
+![Image](Images/Images%20Exp10/2.png)  
+
+![Image](Images/Images%20Exp10/3.png)  
 
 ---
 
@@ -135,7 +132,7 @@ networks:
 docker-compose up -d
 ```
 
-*(Insert Image)*  
+![Image](Images/Images%20Exp10/4.png)  
 
 ---
 
@@ -145,7 +142,7 @@ docker-compose up -d
 docker ps
 ```
  
-*(Insert Image)*  
+![Image](Images/Images%20Exp10/5.png)  
 
 ---
 
@@ -155,6 +152,7 @@ docker ps
 
 ```bash
 mkdir -p sample-java-app/src/main/java/com/example
+cd sample-java-app
 ```
 
 ### Create Java File
@@ -217,7 +215,11 @@ public class Calculator {
 }
 ```
 
-*(Insert Image)*  
+![Image](Images/Images%20Exp10/6.png)  
+
+![Image](Images/Images%20Exp10/7.png)  
+
+![Image](Images/Images%20Exp10/8.png)  
 
 ---
 
@@ -232,7 +234,7 @@ sonarsource/sonar-scanner-cli:latest \
 sleep infinity
 ```
 
-*(Insert Image)*  
+![Image](Images/Images%20Exp10/9.png)  
 
 ---
 
@@ -243,7 +245,9 @@ sleep infinity
 - Go to My Account → Security  
 - Generate Token  
 
-*(Insert Image)*  
+![Image](Images/Images%20Exp10/10.png)  
+
+![Image](Images/Images%20Exp10/11.png)  
 
 ---
 
@@ -257,7 +261,9 @@ sonar.host.url=http://sonarqube:9000
 sonar.login=YOUR_TOKEN
 ```
 
-*(Insert Image)*  
+![Image](Images/Images%20Exp10/12.png)  
+
+![Image](Images/Images%20Exp10/13.png)  
 
 ---
 
@@ -271,7 +277,7 @@ docker exec sonar-scanner sonar-scanner \
 -Dsonar.sources=src
 ```
 
-*(Insert Image)*  
+![Image](Images/Images%20Exp10/14.png)  
 
 ---
 
@@ -281,7 +287,9 @@ docker exec sonar-scanner sonar-scanner \
 - View Bugs, Vulnerabilities, Code Smells  
 - Check Quality Gate  
 
-*(Insert Image)*  
+![Image](Images/Images%20Exp10/15.png)  
+
+![Image](Images/Images%20Exp10/16.png)  
 
 ---
 
@@ -292,7 +300,7 @@ curl -u YOUR_TOKEN: \
 "http://localhost:9000/api/issues/search?projectKeys=sample-java-app&types=BUG"
 ```
 
-*(Insert Image)*  
+![Image](Images/Images%20Exp10/17.png)  
 
 ---
 
