@@ -12,6 +12,7 @@
 6. [Experiment 6](./Experiment6.md)
 7. [Experiment 7: CI/CD using Jenkins, GitHub and Docker Hub](./Experiment7.md)
 8. [Experiment 9: Ansible](./Experiment9.md)
+9. [Experiment 10: SonarQube](./Experiment10.md)
 
 
 ## Theory Class Link  
