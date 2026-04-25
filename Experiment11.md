@@ -53,250 +53,202 @@ docker run  →  Docker Compose  →  Docker Swarm  →  Kubernetes
 
 ---
 
-# PART A – CONCEPT CONTINUATION (Simple Explanation)
+## Part B: Practical (Extension of Experiment 6)
 
-## 1. Create Experiment Directory
+### 1. Create docker-compose.yml (from experiment 6)
+
+We use the same docker-compose file created in Experiment 6 for WordPress and MySQL setup.
+
+![Image](Images/Images%20Exp11/1.png)  
+
+---
+
+### 2. Stop any existing compose setup
+
+This ensures no previous containers interfere with Swarm deployment.
 
 ```bash
-mkdir sonarqube-exp10
-cd sonarqube-exp10
+docker compose down -v
 ```
 
-![Image](Images/Images%20Exp10/1.png)  
+![Image](Images/Images%20Exp11/2.png)  
 
 ---
 
-## 2. Create docker-compose.yml
+### 3. Verify no containers are running
 
-```yaml
-version: '3.8'
-
-services:
-  sonar-db:
-    image: postgres:13
-    container_name: sonar-db
-    restart: unless-stopped
-    environment:
-      POSTGRES_USER: sonar
-      POSTGRES_PASSWORD: sonar
-      POSTGRES_DB: sonarqube
-    volumes:
-      - sonar-db-data:/var/lib/postgresql/data
-    networks:
-      - sonarqube-lab
-
-  sonarqube:
-    image: sonarqube:lts-community
-    container_name: sonarqube
-    restart: unless-stopped
-    depends_on:
-      - sonar-db
-    ports:
-      - "9000:9000"
-    environment:
-      SONAR_JDBC_URL: jdbc:postgresql://sonar-db:5432/sonarqube
-      SONAR_JDBC_USERNAME: sonar
-      SONAR_JDBC_PASSWORD: sonar
-    volumes:
-      - sonar-data:/opt/sonarqube/data
-      - sonar-extensions:/opt/sonarqube/extensions
-    networks:
-      - sonarqube-lab
-
-volumes:
-  sonar-db-data:
-  sonar-data:
-  sonar-extensions:
-
-networks:
-  sonarqube-lab:
-    driver: bridge
-```
-
-![Image](Images/Images%20Exp10/2.png)  
-
-![Image](Images/Images%20Exp10/3.png)  
-
----
-
-## 3. Start Container
-
-```bash
-docker-compose up -d
-```
-
-![Image](Images/Images%20Exp10/4.png)  
-
----
-
-## 4. Check Containers
+Check that all containers are stopped.
 
 ```bash
 docker ps
 ```
- 
-![Image](Images/Images%20Exp10/5.png)  
+
+![Image](Images/Images%20Exp11/3.png)  
 
 ---
 
-## 5. Create Sample Java Application
+### 4. Initialize Docker Swarm
 
-### Create project folder
+This command enables swarm mode and makes the system a manager node.
 
 ```bash
-mkdir -p sample-java-app/src/main/java/com/example
-cd sample-java-app
+docker swarm init --advertise-addr $(hostname -I | awk '{print $1}')
 ```
 
-### Create Java File
-
-```java
-package com.example;
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class Calculator {
-
-    public int divide(int a, int b) {
-        return a / b;
-    }
-
-    public int add(int a, int b) {
-        int result = a + b;
-        int unused = 100;
-        return result;
-    }
-
-    public String getUser(String userId) {
-        String query = "SELECT * FROM users WHERE id = " + userId;
-        return query;
-    }
-
-    public int multiply(int a, int b) {
-        int result = 0;
-        for (int i = 0; i < b; i++) {
-            result = result + a;
-        }
-        return result;
-    }
-
-    public int multiplyAlt(int a, int b) {
-        int result = 0;
-        for (int i = 0; i < b; i++) {
-            result = result + a;
-        }
-        return result;
-    }
-
-    public void processUser(String name, String email, String phone,
-                           String address, String city, String state,
-                           String zip, String country) {
-        System.out.println("Processing: " + name);
-    }
-
-    public String getName(String name) {
-        return name.toUpperCase();
-    }
-
-    public void riskyOperation() {
-        try {
-            int x = 10 / 0;
-        } catch (Exception e) {
-        }
-    }
-}
-```
-
-![Image](Images/Images%20Exp10/6.png)  
-
-![Image](Images/Images%20Exp10/7.png)  
-
-![Image](Images/Images%20Exp10/8.png)  
+![Image](Images/Images%20Exp11/4.png)  
 
 ---
 
-## 6. Install SonarQube Scanner
+### 5. Verify Swarm is active
+
+This shows the node status in the swarm.
 
 ```bash
-docker run -d \
---name sonar-scanner \
---network sonarqube-exp10_sonarqube-lab \
--v "$(pwd)/sample-java-app":/usr/src \
-sonarsource/sonar-scanner-cli:latest \
-sleep infinity
+docker node ls
 ```
 
-![Image](Images/Images%20Exp10/9.png)  
+![Image](Images/Images%20Exp11/5.png)  
 
 ---
 
-## 7. Login to SonarQube and Generate Token
+### 6. Deploy as a Stack (not just Compose)
 
-- Open: http://localhost:9000  
-- Login: admin/admin  
-- Go to My Account → Security  
-- Generate Token  
-
-![Image](Images/Images%20Exp10/10.png)  
-
-![Image](Images/Images%20Exp10/11.png)  
-
----
-
-## 8. Create sonar-project.properties
-
-```properties
-sonar.projectKey=sample-java-app
-sonar.projectName=Sample Java Application
-sonar.sources=src
-sonar.host.url=http://sonarqube:9000
-sonar.login=YOUR_TOKEN
-```
-
-![Image](Images/Images%20Exp10/12.png)  
-
-![Image](Images/Images%20Exp10/13.png)  
-
----
-
-## 9. Run SonarQube Scanner
+Deploy the application using swarm stack instead of docker compose.
 
 ```bash
-docker exec sonar-scanner sonar-scanner \
--Dsonar.host.url=http://sonarqube:9000 \
--Dsonar.login=YOUR_TOKEN \
--Dsonar.projectKey=sample-java-app \
--Dsonar.sources=src
+docker stack deploy -c docker-compose.yml wpstack
 ```
 
-![Image](Images/Images%20Exp10/14.png)  
+![Image](Images/Images%20Exp11/6.png)  
 
 ---
 
-## 10. Analyze Results
+### 7. Verify the deployment
 
-- Open SonarQube Dashboard  
-- View Bugs, Vulnerabilities, Code Smells  
-- Check Quality Gate  
-
-![Image](Images/Images%20Exp10/15.png)  
-
-![Image](Images/Images%20Exp10/16.png)  
-
----
-
-## 11. Generate Report using SonarQube API
+Check all services created in the stack.
 
 ```bash
-curl -u YOUR_TOKEN: \
-"http://localhost:9000/api/issues/search?projectKeys=sample-java-app&types=BUG"
+docker service ls
 ```
 
-![Image](Images/Images%20Exp10/17.png)  
+![Image](Images/Images%20Exp11/7.png)  
+
+---
+
+### 8. See detailed tasks (containers) for a service
+
+Displays container-level details for a specific service.
+
+```bash
+docker service ps wpstack_wordpress
+```
+
+![Image](Images/Images%20Exp11/8.png)  
+
+---
+
+### 9. See all running containers
+
+List all running containers.
+
+```bash
+docker ps
+```
+
+![Image](Images/Images%20Exp11/9.png)  
+
+---
+
+### 10. Access WordPress
+
+Open the application in browser:
+
+http://localhost:8080  
+
+![Image](Images/Images%20Exp11/10.png)  
+
+---
+
+### 11. Scale the Application
+
+Increase the number of WordPress containers.
+
+```bash
+docker service scale wpstack_wordpress=3
+```
+
+![Image](Images/Images%20Exp11/11.png)  
+
+---
+
+### 12. Verify scaling
+
+Check if replicas increased successfully.
+
+```bash
+docker service ls
+```
+
+![Image](Images/Images%20Exp11/12.png)  
+
+---
+
+### 13. Test self-healing
+
+### a. Kill the container (simulate crash)
+
+Manually stop a container to test recovery.
+
+```bash
+docker kill <container_id>
+```
+
+![Image](Images/Images%20Exp11/13.png)  
+
+### b. Watch swarm recreate it
+
+Swarm automatically creates a new container.
+
+```bash
+docker service ps wpstack_wordpress
+```
+
+![Image](Images/Images%20Exp11/14.png)  
+
+### c. Verify new container is running
+
+```bash
+docker ps
+```
+
+![Image](Images/Images%20Exp11/15.png)  
+
+---
+
+### 14. Remove the stack
+
+Deletes all services in the stack.
+
+```bash
+docker stack rm wpstack
+```
+
+![Image](Images/Images%20Exp11/16.png)  
+
+---
+
+### 15. Verify removal
+
+Ensure all services are removed.
+
+```bash
+docker service ls
+```
+
+![Image](Images/Images%20Exp11/17.png)  
 
 ---
 
 ## Conclusion
 
-SonarQube was successfully deployed using Docker and used to analyze a Java application. The tool detected bugs and code smells, and results were visualized through the dashboard and API.
+In this experiment, we extended Docker Compose by introducing Docker Swarm. We successfully deployed a multi-container application as a stack, scaled services, and observed self-healing behavior. This demonstrates how container orchestration automates deployment, scaling, and management of applications.
