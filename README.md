@@ -13,6 +13,7 @@
 7. [Experiment 7: CI/CD using Jenkins, GitHub and Docker Hub](./Experiment7.md)
 8. [Experiment 9: Ansible](./Experiment9.md)
 9. [Experiment 10: SonarQube](./Experiment10.md)
+10. [Experiment 11: Orchestration using Docker Compose & Docker Swarm (Continuation of Experiment 6)](./Experiment11.md)
 
 
 ## Theory Class Link  
