@@ -6,7 +6,7 @@
 
 1. [Experiment 1: Comparison of Virtual Machines and Containers using Ubuntu and Nginx](./Experiment1.md)
 2. [Experiment 2: Docker Installation, Configuration and Running Images](./Experiment2.md)
-3. [Experiment 3: Deploying Nginx using different base images and comparing image layers](./Experiment%.md)
+3. [Experiment 3: Deploying Nginx using different base images and comparing image layers](./Experiment3.md)
 4. [Experiment 4: Docker Essentials](./Experiment4.md)
 5. [Experiment 5: Docker- Volumes, Environment Variables, Monitoring & Networks](./Experiment5.md)
 6. [Experiment 6](./Experiment6.md)
