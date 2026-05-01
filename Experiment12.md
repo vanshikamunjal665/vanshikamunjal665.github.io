@@ -38,6 +38,11 @@ Learn why Kubernetes is used, its basic concepts, and how to deploy, scale, and 
 ---
 
 ## Task 1: Create a Deployment
+A Deployment tells Kubernetes:
+
+- Which container image to use (e.g., WordPress)
+- How many copies (replicas) to run
+- How to identify the pods (labels)
 
 ### Step 1: Create a file (wordpress-deployment.yaml)
 
