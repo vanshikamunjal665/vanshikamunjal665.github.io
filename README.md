@@ -14,6 +14,7 @@
 8. [Experiment 9: Ansible](./Experiment9.md)
 9. [Experiment 10: SonarQube](./Experiment10.md)
 10. [Experiment 11: Orchestration using Docker Compose & Docker Swarm (Continuation of Experiment 6)](./Experiment11.md)
+11. [Experiment 12: Study and analyse container orchestration using Kubernetes](./Experiment12.md)
 
 
 ## Theory Class Link  
